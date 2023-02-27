@@ -1,8 +1,6 @@
 /*
 You are given an array(list) strarr of strings and an integer k. Your task is to return the first longest string consisting of k consecutive strings taken in the array.Examples:
 
- 
-
 strarr = ["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"], k = 2
 
 Concatenate the consecutive strings of strarr by 2, we get:
@@ -46,16 +44,33 @@ consecutive strings : follow one after another without an interruption Instructi
 function longestConsec(strarr, k) {
     if (strarr.length == 0 || k > strarr.length || k <= 0) return '';
     
-    let longStr = '';
-    
-    let newStr = '';
+    let longestStr = '';
+    let newString = '';
     
     for (let i = 0; i < strarr.length; i++){
-      newStr = strarr.slice(i, i+k);
-      if (newStr.join('').length > longStr.length ){
-        longStr = newStr.join('');
+      newString = strarr.slice(i, i+k);
+      if (newString.join('').length > longestStr.length ){
+        longestStr = newString.join('');
       }
     }
     
-    return longStr;
+    return longestStr;
 }
+
+/*
+Time Complexity: O(N), where N is the length of the given string
+Auxiliary Space: O(N)
+*/
+/*
+=> more tests cases including the edge cases for the problem
+
+    longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2), "abigailtheta")
+     longestConsec(["ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh"], 1), "oocccffuucccjjjkkkjyyyeehh")
+      longestConsec([], 3), "")
+     longestConsec(["itvayloxrp","wkppqsztdkmvcuwvereiupccauycnjutlv","vweqilsfytihvrzlaodfixoyxvyuyvgpck"], 2), "wkppqsztdkmvcuwvereiupccauycnjutlvvweqilsfytihvrzlaodfixoyxvyuyvgpck")
+     longestConsec(["wlwsasphmxx","owiaxujylentrklctozmymu","wpgozvxxiu"], 2), "wlwsasphmxxowiaxujylentrklctozmymu")
+      longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], -2), "")
+      longestConsec(["it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"], 3), "ixoyx3452zzzzzzzzzzzz")
+     longestConsec(["it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"], 15), "")
+     longestConsec(["it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"], 0), "")
+*/
